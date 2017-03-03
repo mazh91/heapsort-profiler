@@ -15,11 +15,15 @@ public class Assignment {
 	
 	    /* Make array of n elements */
 	    int arr[] = new int[ N ];
+	    int arr_cp[] = new int[ N ];
 	
 	    /* Accept elements */
 	    System.out.println("\nEnter "+ N +" integer elements");
 	    for (i = 0; i < N; i++)
-	        arr[i] = scan.nextInt();
+	    {
+	    	int rNum =  1 + random.nextInt(10*N);
+	        arr_cp[i] = arr[i] = rNum;
+	    }
 	
 	    /* Call method sort */
 	    Sort sort = new Sort(arr);
