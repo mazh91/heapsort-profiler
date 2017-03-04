@@ -1,39 +1,56 @@
+import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
 
 public class Assignment {
+	final static int N = 100;
+	final static int MAXVALUE = 10*N;
+	final static int AVERAGEOVER = 1000000 / N;
 	public static void main(String[] args) 
 	{
-		int i, N; 
-	    Scanner scan = new Scanner( System.in );        
+//	    Scanner scan = new Scanner( System.in );        
 	    Random random = new Random();
-	
-	    /* Accept number of elements */
-	    System.out.println("Enter number of integer elements ");
-	    N = scan.nextInt();    
 	
 	    /* Make array of n elements */
 	    int arr[] = new int[ N ];
 	    int arrCp[] = new int[ N ];
 	
-	    /* Accept elements */
-	    for (i = 0; i < N; i++)
-	    {
-	    	int rNum =  1 + random.nextInt(10*N);
-	        arrCp[i] = arr[i] = rNum;
-	    }
-	
-	    /* Call method sort */
+	 /* Call method sort */
 	    Sort sort = new Sort();
-	    sort.fastsort(arr);
-	    System.out.println("\nElements after sorting with fast sort ");        
+/*	    sort.fastsort(arr);
 	    printArray(arr);
 	    sort.slowsort(arrCp);
-	    System.out.println("\nElements after sorting with slow sort ");      
 	    printArray(arrCp);
-	    scan.close();
+	    scan.close();*/
 	    
+	    /* STEP 2: Profiling */
+	    long start, estFastSum, estSlowSum;
+	    estFastSum = 0;
+	    estSlowSum = 0;
+	    // Calculate avg time to srot an array of size N with each algorithm
+	    for (int i = 0; i < AVERAGEOVER; i++)
+	    {
+	    	/* Generate* elements */
+	    	for (int j = 0; j < N; j++)
+	    	{
+	    		int rNum =  1 + random.nextInt(MAXVALUE);
+	    		arrCp[j] = arr[j] = rNum;
+	    	}
+	    	start = System.nanoTime();
+	    	sort.fastsort(arr);
+	    	estFastSum += System.nanoTime() - start;
+	    	
+	    	start = System.nanoTime();
+	    	sort.slowsort(arrCp);
+	    	estSlowSum += System.nanoTime() - start;
+	    }
+	    
+	    // Obtain average of both algorithms
+	    float avgSlow = estSlowSum / AVERAGEOVER;
+	    float avgFast = estFastSum / AVERAGEOVER;
+	    
+	    System.out.printf("%f\t%f\n", avgSlow, avgFast);
 	}    
 	
 	public static void printArray(int arr[]){
