@@ -15,19 +15,30 @@ public class Assignment {
 	
 	    /* Make array of n elements */
 	    int arr[] = new int[ N ];
-	    int arr_cp[] = new int[ N ];
+	    int arrCp[] = new int[ N ];
 	
 	    /* Accept elements */
-	    System.out.println("\nEnter "+ N +" integer elements");
 	    for (i = 0; i < N; i++)
 	    {
 	    	int rNum =  1 + random.nextInt(10*N);
-	        arr_cp[i] = arr[i] = rNum;
+	        arrCp[i] = arr[i] = rNum;
 	    }
 	
 	    /* Call method sort */
-	    Sort sort = new Sort(arr);
+	    Sort sort = new Sort();
+	    sort.fastsort(arr);
+	    System.out.println("\nElements after sorting with fast sort ");        
+	    printArray(arr);
+	    sort.slowsort(arrCp);
+	    System.out.println("\nElements after sorting with slow sort ");      
+	    printArray(arrCp);
 	    scan.close();
 	    
 	}    
+	
+	public static void printArray(int arr[]){
+	    for (int i = 0; i < arr.length; i++)
+	        System.out.print(arr[i]+" ");            
+	        System.out.println("\n");
+	}
 }
