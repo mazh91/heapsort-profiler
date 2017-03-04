@@ -9,7 +9,6 @@ public class Assignment {
 	final static int AVERAGEOVER = 1000000 / N;
 	public static void main(String[] args) 
 	{
-//	    Scanner scan = new Scanner( System.in );        
 	    Random random = new Random();
 	
 	    /* Make array of n elements */
@@ -18,11 +17,6 @@ public class Assignment {
 	
 	 /* Call method sort */
 	    Sort sort = new Sort();
-/*	    sort.fastsort(arr);
-	    printArray(arr);
-	    sort.slowsort(arrCp);
-	    printArray(arrCp);
-	    scan.close();*/
 	    
 	    /* STEP 2: Profiling */
 	    long start, estFastSum, estSlowSum;
@@ -52,10 +46,4 @@ public class Assignment {
 	    
 	    System.out.printf("%f\t%f\n", avgSlow, avgFast);
 	}    
-	
-	public static void printArray(int arr[]){
-	    for (int i = 0; i < arr.length; i++)
-	        System.out.print(arr[i]+" ");            
-	        System.out.println("\n");
-	}
 }
