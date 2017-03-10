@@ -9,7 +9,7 @@ public class Sort
     public Sort(){
 
     }
-
+	// Heap sort
 	public void fastsort(int arr[])
 	{
 	    heapify(arr);        
@@ -21,6 +21,7 @@ public class Sort
 	    }
 		
 	}
+	// Insertion Sort
 	public void slowsort(int arr[])
 	{
 		  int temp;
